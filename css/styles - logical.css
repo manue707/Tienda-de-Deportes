@@ -1,0 +1,190 @@
+@font-face {
+    font-family: charter;
+    src: url(/fonts/charter-regular.otf);
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: charter;
+    src: url(/fonts/charter-italic.otf);
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: charter;
+    src: url(/fonts/charter-bold.otf);
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: charter;
+    src: url(/fonts/charter-bold-italic.otf);
+    font-style: italic;
+    font-weight: bold;
+}
+
+body {
+    color: var(--white30);
+    font-family: "Nunito", sans-serif;
+    background-color: rgb(247, 238, 227);
+}
+
+html {
+    font-size: 15px;
+    overflow-x: hidden;
+}
+
+.hero {
+    background: linear-gradient(96.07deg, #121212 30.63%, #d40010 102.18%);
+    block-size: 100px;
+    border-radius: 10px 10px 0 0;
+}
+
+#logo {
+    inline-size: 100px;
+    border-radius: 100%;
+}
+
+.titulo {
+    text-align: center;
+    position: relative;
+    font-size: 40px;
+    color: white;
+    font-family: 'charter', serif;
+    font-weight: bold;
+    margin: -75px;
+}
+
+p {
+    font-size: 25px;
+    text-align: center;
+}
+
+div#menu_top {
+    position: relative;
+    background: linear-gradient(96.07deg, #121212 30.63%, #d40010 102.18%);
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+div#menu_top a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+div#menu_top a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+h2 {
+    text-align: center;
+    font-size: 35px;
+    margin-block: 40px;
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.galeria img {
+    width: 200px;
+    height: auto;
+    border-radius: 10%;
+    object-fit: cover;
+}
+
+.galeria img:hover {
+    transform: scale(1.07);
+    transition: transform 0.3s;
+}
+
+.precios {
+    font-weight: bold;
+    font-size: 20px;
+    margin-block: 20px;
+    align-items: center;
+}
+
+.banner-social {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.redes-iconos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.red-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    gap: 8px;
+}
+
+.red-item img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    display: block;
+}
+
+.red-item tiktok-img {
+    width: 40px;
+    height: 40px;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 10px;
+        overflow-x: hidden;
+    }
+    .titulo {
+        font-size: 32px;
+        text-align: center;
+        margin: -70px;
+    }
+    .galeria img {
+        width: 100%;
+        max-width: 150px;
+    }
+    div#menu_top {
+        font-size: 12px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    p {
+        font-size: 14px;
+    }
+    .precios {
+        font-size: 18px;
+        text-align: center;
+    }
+    #logo {
+        inline-size: 60px;
+        padding: 20px;
+    }
+}
