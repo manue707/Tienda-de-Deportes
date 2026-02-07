@@ -26,61 +26,142 @@
     font-weight: bold;
 }
 
+:root {
+    --bg-color: #0d1117;
+    /* Deep dark blue/black */
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-color: #58a6ff;
+    /* Soft blue accent */
+    --card-bg: #161b22;
+}
+
 body {
-    color: var(--white30);
+    color: var(--text-primary);
     font-family: "Nunito", sans-serif;
-    background-color: rgb(247, 238, 227);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
 html {
-    font-size: 15px;
+    font-size: 16px;
+    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
-.hero {
-    background: linear-gradient(96.07deg, #121212 30.63%, #d40010 102.18%);
-    block-size: 100px;
-    border-radius: 10px 10px 0 0;
+/* Reset for all elements */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-#logo {
-    inline-size: 100px;
-    border-radius: 100%;
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url("../imagenes/background_sports.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 220px 20px 100px;
+    /* Add top padding to account for fixed header overlay */
+    text-align: center;
+    border-radius: 0;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+/* Old #logo rule removed as it is now scoped under menu_top or general ID */
 
 .titulo {
-    text-align: center;
-    position: relative;
-    font-size: 40px;
+    position: static;
+    /* Remove relative/margin hacks */
+    margin: 0;
+}
+
+h1.titulo {
+    font-size: 64px;
+    color: var(--text-primary);
+    font-family: "Edu NSW ACT Cursive", cursive;
+    font-weight: 800;
+    /* Extra bold */
+    letter-spacing: -2px;
+    text-transform: uppercase;
     color: white;
-    font-family: 'charter', serif;
-    font-weight: bold;
-    margin: -75px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
 }
 
 p {
-    font-size: 25px;
+    font-size: 18px;
+    color: var(--text-secondary);
     text-align: center;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    line-height: 1.8;
 }
 
 div#menu_top {
-    position: relative;
-    background: linear-gradient(96.07deg, #121212 30.63%, #d40010 102.18%);
-    border-radius: 0 0 10px 10px;
-    text-align: center;
-    padding: 10px;
-    font-size: 18px;
-    font-weight: bold;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(13, 17, 23, 0.0);
+    /* Transparent initially */
+    transition: all 0.4s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+    padding: 30px 40px;
+    /* Larger padding initially */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div#menu_top.scrolled {
+    background-color: rgba(13, 17, 23, 0.98);
+    padding: 10px 40px;
+    /* Shrink padding on scroll */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+#logo {
+    width: 150px;
+    /* Initial Large Size */
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div#menu_top.scrolled #logo {
+    width: 50px;
+    /* Small Size on Scroll */
+    height: 50px;
+    border-width: 2px;
+    box-shadow: none;
+}
+
+/* Remove old .menu-logo styles if present */
+.menu-logo {
+    display: none;
 }
 
 div#menu_top a {
-    color: white;
+    color: var(--text-secondary);
     text-decoration: none;
-    margin: 0 15px;
+    margin: 0 20px;
+    transition: color 0.3s ease;
+    font-weight: 600;
 }
 
 div#menu_top a:hover {
-    text-decoration: underline;
+    color: var(--text-primary);
+    text-decoration: none;
 }
 
 .content {
@@ -98,41 +179,97 @@ h2 {
 .galeria {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
     justify-content: center;
+    gap: 30px;
+    padding: 0 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.producto {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 280px;
+    max-width: 100%;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent-color);
 }
 
 .galeria img {
-    width: 200px;
-    height: auto;
-    border-radius: 10%;
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
     object-fit: cover;
+    object-position: center;
+    margin-bottom: 15px;
 }
 
 .galeria img:hover {
-    transform: scale(1.07);
-    transition: transform 0.3s;
+    transform: none;
+    /* Reset old hover */
+}
+
+h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-block: 60px 30px;
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
 }
 
 .precios {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 20px;
-    margin-block: 20px;
-    align-items: center;
+    margin-block: 10px 0;
+    color: var(--accent-color);
+    align-self: flex-start;
+    padding-left: 5px;
 }
 
 .banner-social {
-    background: linear-gradient(96.07deg, #121212 30.63%, #d40010 102.18%);
-    color: white;
-    padding: 20px;
+    background-color: var(--card-bg);
+    color: var(--text-secondary);
+    padding: 60px 20px;
     text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 60px;
+}
+
+.banner-social h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    font-weight: 400;
 }
 
 .redes-iconos {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
@@ -141,50 +278,50 @@ h2 {
     align-items: center;
     text-decoration: none;
     color: white;
-    gap: 8px;
+    transition: transform 0.3s ease;
+}
+
+.red-item:hover {
+    transform: scale(1.1);
 }
 
 .red-item img {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+
+
+.red-item .tiktok {
+    width: 30px;
+    /* Normalize size */
+    height: 30px;
+    object-fit: contain;
+    transform: scale(1.4);
+    /* Slight adjustments for visual weight */
     display: block;
 }
 
-.red-item tiktok-img {
-    width: 40px;
-    height: 40px;
-}
-
 @media (max-width: 768px) {
-    body {
-        font-size: 10px;
-        overflow-x: hidden;
+    .galeria {
+        gap: 20px;
+        padding: 0 20px;
     }
-    .titulo {
-        font-size: 32px;
-        text-align: center;
-        margin: -70px;
+
+    h1.titulo {
+        font-size: 40px;
     }
-    .galeria img {
-        width: 100%;
-        max-width: 150px;
-    }
+
     div#menu_top {
+        justify-content: center;
+        padding: 15px;
         font-size: 12px;
     }
-    h2 {
-        font-size: 20px;
-    }
-    p {
-        font-size: 14px;
-    }
-    .precios {
-        font-size: 18px;
-        text-align: center;
-    }
-    #logo {
-        inline-size: 60px;
-        padding: 20px;
+
+    div#menu_top a {
+        margin: 0 10px;
     }
 }
